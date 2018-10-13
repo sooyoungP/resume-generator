@@ -252,6 +252,8 @@ origin	https://github.com/<사용자-이름>/my-resume.git (push)
 
 아직 git 사용에 익숙하지 않다면 [git 튜토리얼 - 2. 코드를 수정하고 저장소에 저장하기](https://git-scm.com/book/ko/v1/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%EC%88%98%EC%A0%95%ED%95%98%EA%B3%A0-%EC%A0%80%EC%9E%A5%EC%86%8C%EC%97%90-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0)를 참고하세요.
 
+그리고 README.md 파일에 있는 내용을 모두 지우세요.
+
 ```
 $ git status
 $ git add .
