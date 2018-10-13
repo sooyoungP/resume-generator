@@ -1,6 +1,6 @@
 # Resume Generator Guide : 한글
 
-본 가이드는 Resume Generator 리퍼지토리를 활용해 [마크다운(Markdown)](https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4)으로 이력서, 커버레터, 레퍼런스 문서를 만들고 이력서 웹사이트를 깃허브 페이지(GitHub Pages)에 배포하는 방법을 소개합니다.
+본 가이드는 Resume Generator 저장소를 활용해 [마크다운(Markdown)](https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4)으로 이력서, 커버레터, 레퍼런스 문서를 만들고 이력서 웹사이트를 깃허브 페이지(GitHub Pages)에 배포하는 방법을 소개합니다.
 
 ## 준비
 **Git/GitHub** 로컬 컴퓨터에 Git/GitHub이 설치와 설정이 되어 있는지 확인합니다.
@@ -52,10 +52,10 @@ Makefile 빌드 자동화 스크립트 파일을 사용해 명령어를 실행�
 
 다음으로 환경 설정 변수를 설정해야 합니다. 환경 변수(Environment Variables)란 운영 체제가 콘솔 창에서 필요한 실행 파일을 찾는데 사용하는 시스템 변수입니다. 즉 환경 변수라는 곳에 바로가기 경로를 지정해, 아무 곳에서도 명령어를 실행할 수 있습니다.
 
-##### 환경변수 설정하기
-환경변수를 설정하는 방법은 2가지가 있습니다. [프롬프트(커맨드라인, 콘솔)](https://tutorial.djangogirls.org/ko/intro_to_command_line/)을 통해 설치하는 방법과 제어판의 고급 시스템 설정을 통해 설정 가능합니다. 프롬프트를 이용해 설정하는 방법은 여러창을 이동하지 않고 한 창(프롬프트)에서 몇가지 명령어를 입력하는 방법으로 환경 변수를 설정할 수 있어 많은 개발자들이 선호하는 방법입니다. 
+##### 환경 변수 설정하기
+환경변수를 설정하는 방법은 2가지가 있습니다. [명령 프롬프트(커맨드라인, 콘솔)](https://tutorial.djangogirls.org/ko/intro_to_command_line/)을 통해 설치하는 방법과 제어판의 고급 시스템 설정을 통해 설정 가능합니다. 프롬프트를 이용해 설정하는 방법은 여러창을 이동하지 않고 한 창(프롬프트)에서 몇 가지 명령어를 입력하는 방법으로 환경 변수를 설정할 수 있어 많은 개발자들이 선호하는 방법입니다. 
 
-##### 명렁프롬프트로 환경변수 설정하기
+##### 명령 프롬프트로 환경변수 설정하기
 먼저 `명령 프롬프트` 아이콘의 오른쪽 버튼을 클릭해 `관리자 권한으로 열기`를 선택해 프롬프트 창을 엽니다.
 
 `path` 명령어로 현재의 환경 설정 변수를 확인합니다.
@@ -68,8 +68,8 @@ PATH=C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32
 GuiWin32 설치 경로를 확인한 후 `setx` 명령어로 환경 변수 설정 경로를 설정합니다. 끝에 바이너리 폴더인 `\bin`를 추가하는 것을 잊지 마세요. 
 
 ```
-setx <환경 변수_이름> "<환경 변수_설정할_경로>" -m
-setx path "%<환경변수_이름>%;%PATH%" -m
+setx <환경_변수_이름> "<환경 변수_설정할_경로>" -m
+setx path "%<환경_변수_이름>%;%PATH%" -m
 ```
 
 ```
@@ -97,7 +97,7 @@ Copyright (C) 2006  Free Software Foundation, Inc.
 
 `제어판(Settings) > 시스템(System) > 정보(About)`로 들어가 우측에 `시스템 정보(System Info) > 고급 시스템 설정(Advance system settings)`를 클릭합니다.  그리고 맨 아래에 `환경 변수(Environment Variables)`를 클릭합니다.
 
-`환경 변수(Environment Variables)` 에서 `000에 대한 사용자 변수(User variables for 000)` 항목 아래, `Path`를 클릭하고 `편집(Edit)` 버튼을 클릭합니다. 위의 **명렁프롬프트로 환경변수 설정하기**를 통해 환경변수 설정을 마쳤다면 `C:\Program Files (x86)\GnuWin32\bin`가 있는 것을 확인할 수 있을 것입니다. 
+`환경 변수(Environment Variables)` 에서 `000에 대한 사용자 변수(User variables for 000)` 항목 아래, `Path`를 클릭하고 `편집(Edit)` 버튼을 클릭합니다. 위의 **명령 프롬프트로 환경변수 설정하기**를 통해 환경변수 설정을 마쳤다면 `C:\Program Files (x86)\GnuWin32\bin`가 있는 것을 확인할 수 있을 것입니다. 
 
 만약 위에서 설정을 하지 못하였다면 여기서 환경 변수를 추가하면 됩니다. `찾아보기(Browse)` 버튼을 클릭해 `GnuWin32`의 설치 경로를 선택합니다. 여기서 반드시 `GnuWin32\bin` 경로를 선택해야 합니다.
 
@@ -188,17 +188,18 @@ $ tex -v
 TeX 3.14159265 (TeX Live 2018)
 ```
 
-## 내 GitHub 리퍼지토리(repository)에 소스코드 올리기
+## 내 깃허브 저장소(GitHub Repository)에 소스코드 올리기
 
-이 리퍼지토리를 [보일러플레이트(boilerplate)](https://www.google.co.kr/search?q=boilerplate+%EC%BD%94%EB%93%9C&oq=boilerplate&aqs=chrome.2.69i57j0l5.2634j0j7&sourceid=chrome&ie=UTF-8)로 사용해 GitHub 페이지에 호스팅할 수 있습니다.
-`make` 명령어를 사용해 간단하게 gh-pages 브랜치 생성, 자동 커밋 및 배포를 할 수 있습니다. 아래 `resume-generator` 리퍼지토리 이름을 `my-resume`로 바꾸고, GitHub Pages에 이력서 웹 사이트를 호스팅 하는 방법을 소개합니다.
+이 저장소를 보일러플레이트(boilerplate)로 사용해 [깃허브 페이지(GitHub Pages)](https://pages.github.com/)에 호스팅 해보겠습니다. 보일러플레이트란 자주 사용되는 코드를 미리 만들어두고 그 안에 사용자가 필요한 코드를 수정 및 추가하여 완전한 소프트웨어를 만들 수 있도록 도와주는 프레임워크나 소스코드 등을 말합니다. 이 저장소를 활용해 문서 본문을 수정하거나 스타일링을 추가하는 등 자유롭게 커스터마이징하여 배포할 수 있습니다. 
 
-1. 콘솔(프롬프트)를 열고 리퍼지토리를 클론합니다.
+이 프로그램은 `make` 명령어를 사용해 간단하게 gh-pages 브랜치 생성, 자동 커밋 및 배포를 합니다. 
+
+1. 프롬프트를 다시 열고 이 저장소를 클론합니다.
 ```
 $ git clone https://github.com/sujinleeme/resume-generator.git
 ```
 
-2. 현재 로컬 폴더 이름인 `resume-generator`를 `my-resume`로 바꿉니다. 리퍼지토리 이름이 `my-resume`이기 때문에 편의상 폴더 이름을 바꾸겠습니다.
+2. 현재 로컬 폴더 이름인 `resume-generator`를 `my-resume`로 바꿉니다. 앞으로 우리가 만들 저장소 이름은 `my-resume`이기 때문에 편의 상 폴더 이름을 바꾸겠습니다.
 
 * Windows
 ```
@@ -209,7 +210,8 @@ $ Rename resume-generator my-resume
 $ mv resume-generator my-resume
 ```
 
-3. 프로젝트 폴더로 들어가 숨김 폴더인 `.git`을 지우고 git init 명령어를 사용해 git을 초기화 합니다.
+3. 프로젝트 폴더인 `my-resume`로 들어가 숨김 폴더인 `.git`을 지우고 git init 명령어를 사용해 git을 초기화 합니다. 지금 경로를 잘 모르겠다면 `pwd` 를 입력해 경로를 확인해보세요.
+
 * Windows
 ```
 > cd my-resume
@@ -224,34 +226,43 @@ $ rm -rf .git
 $ git init
 ```
 
-아래와 같은 메시지가 나올 것입니다.
+아래와 같이 깃 저장소를 다시 초기화했다는 메시지 입니다.
 ```
 Reinitialized existing Git repository in /Users/sujin/Desktop/resume-generator/.git/
-/Users/sujin/Desktop/resume-generator/.git/ 안의 기존 깃 저장소를 다시 초기화했습니다
 ```
 
-4. [깃허브 홈페이지](https://github.com/sujinleeme?tab=repositories)에서 `my-resume`라는 빈 리퍼지토리를 생성합니다. readme.md`, `.gitignore`, `license` 파일을 추가하지 말고 완전히 비어있는 상태여야 합니다. 로컬 리퍼지토리에 원격 리퍼지토리를 추가합니다.
+4. [깃허브 홈페이지](https://github.com/sujinleeme?tab=repositories)에서 `my-resume`라는 빈 저장소를 생성합니다. `readme.md`, `.gitignore`, `license` 파일을 추가하지 말고 완전히 비어있는 상태여야 합니다. 로컬 저장소에 원격 저장소를 추가합니다.
 
 ```
-$ git remote add origin https://github.com/[사용자 이름]/my-resume.git
+$ git remote add origin https://github.com/<사용자-이름>/my-resume.git
 $ git remote -v
-origin	https://github.com/[사용자 이름]/my-resume.git (fetch)
-origin	https://github.com/[사용자 이름]/my-resume.git (push)
+origin	https://github.com/<사용자-이름>/my-resume.git (fetch)
+origin	https://github.com/<사용자-이름>/my-resume.git (push)
 ```
 
-이제 add, commit, push명령어를 사용해 로컬리파지토리의 코드를 원격 리파지토리로 올려줍니다.
+원격 저장소 주소가 잘 바뀌었는지 확인하세요.
+
+이제 `add`, `commit`, `push` 명령어를 사용해 로컬 저장소 내 코드를 원격 저장소로 올리겠습니다.
+
+아직 git 사용에 익숙하지 않다면 [git 튜토리얼 - 2. 코드를 수정하고 저장소에 저장하기](https://git-scm.com/book/ko/v1/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%EC%88%98%EC%A0%95%ED%95%98%EA%B3%A0-%EC%A0%80%EC%9E%A5%EC%86%8C%EC%97%90-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0)를 참고하세요.
+
 ```
+$ git status
 $ git add .
-$ git commit -m "Add Resume Maker boilerplate"
+$ git status
+$ git commit -m "Add Resume Generator boilerplate"
 $ git push --set-upstream origin master
 ```
-https://github.com/[사용자 이름]/my-resume 페이지로 가서 잘 올라갔는지 확인해보세요.
+https://github.com/[<사용자-이름>/my-resume 에서 커밋이 잘 올라갔는지 확인해보세요.
 
-5. 지금부터는 웹사이트 배포를 해보겠습니다. 깃허브 페이지는 기본적으로 `gh-pages`에 푸쉬하면 GitHub Pages가 자동으로 배포됩니다.
-브랜치번경-추가-커밋-푸쉬 단계까지 git 명령어를 여러번 쳐야하는 번거로움이 있습니다. 때문에 이 명령어 집합을 모아 Makefile에 정의했습니다.
+5. 지금부터는 웹 사이트를 빌드하고 배포해보겠습니다. 깃허브 페이지는 기본적으로 `gh-pages`에 푸쉬하면 깃허브 페이지가 자동으로 배포됩니다.
+
+사실 **브랜치 변경-추가-커밋-푸쉬 단계**까지 git 명령어를 여러 번 쳐야하기 때문에 번거롭습니다. 때문에 이 명령어 집합을 모아 [Makefile](https://github.com/sujinleeme/resume-generator/blob/master/Makefile)에 정의했습니다.
+
+우리는 `master` 브랜치가 아닌 `gh-pages` 브랜치에 에 웹 사이트 관련 소스인 html, css 파일만 브랜치에 올려 배포할 것입니다.
 
 먼저 배포 브랜치인 `gh-pages`를 만들어보겠습니다.
-`make gh-pages` 명령어를 실행하면 자동으로 신규 gh-pages 라는 이름의 로컬/원격 브랜치가 생성됩니다.
+`make gh-pages` 명령어를 실행하면 자동으로 `gh-pages` 라는 새 로컬/원격 브랜치가 생성됩니다.
 
 ```
 $ make gh-pages
@@ -270,7 +281,9 @@ Switched to branch 'master'
 Your branch is up to date with 'origin/master'.
 ```
 
-6. 이제 gh-pages 브랜치에 빌드하기 위해 `make deploy` 명령어를 입력합니다. `index.html` 빌드되고 자동 커밋되어 `gh-pages`에 푸쉬되고 최종적으로 웹사이트가 배포됩니다.
+6. 이제 `gh-pages` 브랜치에 빌드하기 위해 `make deploy` 명령어를 입력합니다. `index.html` 빌드되고 자동 커밋되어 `gh-pages`에 푸쉬되고 최종적으로 웹 사이트가 배포됩니다.
+
+https://github.com/sujinleeme/resume-generator/tree/gh-pages 와 같이 `static`, `.gitignore`, `index.html` 파일만 올라가 있어야 합니다.
 
 ```
 Cleaning
@@ -281,24 +294,67 @@ git checkout master
 Switched to branch 'master'
 ```
 
-`https://[사용자 이름].github.io/my-resume/` 주소로 들어가서 내용이 잘 반영되었는지 확인해보세요.
+`https://github.com/<사용자-이름>/resume-generator/tree/gh-pages` 주소로 들어가서 내용이 잘 반영되었는지 확인해보세요.
 
-## 이력서 문서 작성 및 수정하기
+## 이력서 문서 작성하기
+
+1. 비주얼 스튜디오 코드 에디터 열기
+
+프롬프트에서 프로젝트 경로에서 `code .` 명령어를 입력하면 비주얼 스튜디오 코드 에디터 창이 열립니다. 윈도우와 맥 모두 동일합니다.
+
+```
+$ pwd
+/Users/sujin/Desktop/my-resume
+
+$ code .
+```
 
 `content` 폴더에 있는 마크다운 문서를 열고 이력서, 레퍼런스, 커버레터를 작성합니다.
 
-작성이 끝나면 `make` 명령어 실행하면 문서가 생성됩니다.
+이후 프롬프트에서 `make <명령어>`를 실행해 out 폴더 내 각 문서가 생성 되었는지 확인해보세요.
 
-- `make all`: `out`폴더 안에 `html`, `pdf` 문서가 생성됩니다.
-- `make pdf`: `pdf` 문서만 생성됩니다.
-- `make build`: `html` 문서만 생성됩니다.
+- `make all`: `out`폴더 안에 `html`, `pdf` 문서가 생성합니다.
+- `make pdf`: `out`폴더 안에 `pdf` 문서만 생성합니다.
+- `make build`: `out`폴더 안에 `html` 문서만 생성합니다.
 
-master 브랜치에서 수정한 파일을 다시 커밋해봅시다. 수정한 내역을 커밋 메시지로 간결하게 적어봅시다.
+프롬프트에서 바로 파일 탐색기를 열려면 아래 명령어를 입력합니다.
+프로젝트 폴더인 `my-resume`에 있는지 경로를 확인하세요.
+
+* Windows
+```
+> pwd
+/Users/sujin/Desktop/my-resume
+
+> start .
+```
+
+* MacOSX
+```
+$ pwd
+/Users/sujin/Desktop/my-resume
+
+$ open .
+```
+
+`master` 브랜치에 수정한 파일을 커밋하겠습니다. 수정한 내역을 커밋 메시지로 간결하게 적어봅시다.
+
 ```
 $ git checkout master
+$ git status
 $ git add .
+$ git status
 $ git commit -m "Edit my name" 
 $ git push
 ```
 
-`make deploy`로 웹 사이트를 다시 배포합니다.
+새로 수정한 내용이 웹 사이트에도 반영이 되어야겠지요?
+
+다시 프롬프트에서 `make deploy`를 실행해 웹 사이트를 배포합니다.
+
+```
+$ make deploy
+```
+
+https://<사용자-이름>.github.io/my-resume/ 주소로 들어가서 잘 반영되었는지 확인해보세요.
+
+
