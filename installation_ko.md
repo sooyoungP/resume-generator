@@ -15,7 +15,7 @@
 #### Pandoc
 [Pandoc](https://pandoc.org/)은 존 팩프랜드(John Macfarlane)가 하스켈 언어로 제작한 오픈 소스로 하나의 문서를 여러 다른 형태의 문서로 변환하는 유틸리티입니다. Pandoc(판독)으로 마크다운, HTML, LaTeX, Word docx, epub 등 다양한 형식으로 문서를 변환할 수 있습니다.
 
-### Markdown
+#### Markdown
 마크다운(Markdown) 문법은 특수문자를 활용해 각 행과 텍스트를 스타일링합니다. 2004년 존 그루버(John Gruber)가 창안한 것으로 쉽게 쓰고 읽을 수 있고 특수기호와 문자를 이용한 매우 간단한 구조의 문법을 사용하여 웹에서도 보다 빠르게 컨텐츠를 작성하고 보다 직관적으로 인식할 수 있습니다. 깃허브와 스택오브플로우(Stackoverflow) 등 내 텍스트 에디터는 모두 마크다운 문법을 사용하고 있습니다. [마크다운 문법은 30분 내면 배울 수 있을 정도로 어렵지 않고](https://guides.github.com/features/mastering-markdown/) 작성도 매우 간편해 많은 프로그래머들이 즐겨 쓰고 있는 문서 형식입니다.
 
 ### LaTeX
@@ -194,12 +194,15 @@ TeX 3.14159265 (TeX Live 2018)
 
 이 프로그램은 `make` 명령어를 사용해 간단하게 gh-pages 브랜치 생성, 자동 커밋 및 배포를 합니다. 
 
-1. 프롬프트를 다시 열고 이 저장소를 클론합니다.
+#### 1. 저장소 클론하기
+
+프롬프트를 다시 열고 이 저장소를 클론합니다.
 ```
 $ git clone https://github.com/sujinleeme/resume-generator.git
 ```
 
-2. 현재 로컬 폴더 이름인 `resume-generator`를 `my-resume`로 바꿉니다. 앞으로 우리가 만들 저장소 이름은 `my-resume`이기 때문에 편의 상 폴더 이름을 바꾸겠습니다.
+#### 2. 프로젝트 폴더 이름 바꾸기
+현재 로컬 폴더 이름인 `resume-generator`를 `my-resume`로 바꿉니다. 앞으로 우리가 만들 저장소 이름은 `my-resume`이기 때문에 편의 상 폴더 이름을 바꾸겠습니다.
 
 * Windows
 ```
@@ -210,7 +213,8 @@ $ Rename resume-generator my-resume
 $ mv resume-generator my-resume
 ```
 
-3. 프로젝트 폴더인 `my-resume`로 들어가 숨김 폴더인 `.git`을 지우고 git init 명령어를 사용해 git을 초기화 합니다. 지금 경로를 잘 모르겠다면 `pwd` 를 입력해 경로를 확인해보세요.
+#### 3. 깃 초기화 하기
+프로젝트 폴더인 `my-resume`로 들어가 숨김 폴더인 `.git`을 지우고 git init 명령어를 사용해 git을 초기화 합니다. 지금 경로를 잘 모르겠다면 `pwd` 를 입력해 경로를 확인해보세요.
 
 * Windows
 ```
@@ -226,12 +230,14 @@ $ rm -rf .git
 $ git init
 ```
 
-아래와 같이 깃 저장소를 다시 초기화했다는 메시지 입니다.
+아래와 같이 깃 저장소를 다시 초기화했다는 메시지가 보일 것입니다..
 ```
 Reinitialized existing Git repository in /Users/sujin/Desktop/resume-generator/.git/
 ```
 
-4. [깃허브 홈페이지](https://github.com/sujinleeme?tab=repositories)에서 `my-resume`라는 빈 저장소를 생성합니다. `readme.md`, `.gitignore`, `license` 파일을 추가하지 말고 완전히 비어있는 상태여야 합니다. 로컬 저장소에 원격 저장소를 추가합니다.
+#### 4. 깃허브 저장소 만들기
+
+깃허브 홈페이지에서 `my-resume`라는 빈 저장소를 생성합니다. `readme.md`, `.gitignore`, `license` 파일을 추가하지 말고 완전히 비어있는 상태여야 합니다. 로컬 저장소에 원격 저장소를 추가합니다.
 
 ```
 $ git remote add origin https://github.com/<사용자-이름>/my-resume.git
@@ -253,16 +259,17 @@ $ git status
 $ git commit -m "Add Resume Generator boilerplate"
 $ git push --set-upstream origin master
 ```
-https://github.com/[<사용자-이름>/my-resume 에서 커밋이 잘 올라갔는지 확인해보세요.
+https://github.com/<사용자-이름>/my-resume 에서 커밋이 잘 올라갔는지 확인해보세요.
 
-5. 지금부터는 웹 사이트를 빌드하고 배포해보겠습니다. 깃허브 페이지는 기본적으로 `gh-pages`에 푸쉬하면 깃허브 페이지가 자동으로 배포됩니다.
+#### 5. gh-pages 브랜치 만들기
+지금부터는 웹 사이트를 빌드하고 배포해보겠습니다. 기본적으로 `gh-pages`에 푸쉬하면 깃허브 페이지가 자동으로 배포됩니다.
 
-사실 **브랜치 변경-추가-커밋-푸쉬 단계**까지 git 명령어를 여러 번 쳐야하기 때문에 번거롭습니다. 때문에 이 명령어 집합을 모아 [Makefile](https://github.com/sujinleeme/resume-generator/blob/master/Makefile)에 정의했습니다.
+사실 **브랜치 변경-추가-커밋-푸쉬 단계**까지 git 명령어를 여러 번 쳐야하기 때문에 꽤 번거롭습니다. 때문에 이 명령어 집합을 모아 [Makefile](https://github.com/sujinleeme/resume-generator/blob/master/Makefile)에 정의했습니다.
 
-우리는 `master` 브랜치가 아닌 `gh-pages` 브랜치에 에 웹 사이트 관련 소스인 html, css 파일만 브랜치에 올려 배포할 것입니다.
+우리는 `master` 브랜치가 아닌 `gh-pages` 브랜치에 에 웹 사이트 관련 소스인 html, css 파일만 브랜치에 올릴 것입니다.
 
 먼저 배포 브랜치인 `gh-pages`를 만들어보겠습니다.
-`make gh-pages` 명령어를 실행하면 자동으로 `gh-pages` 라는 새 로컬/원격 브랜치가 생성됩니다.
+`make gh-pages` 명령어를 실행하면 자동으로 `gh-pages` 라는 새 로컬/원격 브랜치가 생성됩니다. 물론 make 명령어 대신 git 명령어를 입력할 수 있습니다.
 
 ```
 $ make gh-pages
@@ -281,7 +288,8 @@ Switched to branch 'master'
 Your branch is up to date with 'origin/master'.
 ```
 
-6. 이제 `gh-pages` 브랜치에 빌드하기 위해 `make deploy` 명령어를 입력합니다. `index.html` 빌드되고 자동 커밋되어 `gh-pages`에 푸쉬되고 최종적으로 웹 사이트가 배포됩니다.
+#### 6. 깃허브 페이지 배포하기
+6. 이제 `gh-pages` 브랜치에 빌드하기 위해 `make deploy` 명령어를 입력합니다. `index.html` 빌드되고 자동 커밋되어 `gh-pages`에 푸쉬되고 최종적으로 웹 사이트가 배포됩니다. 물론 make 명령어 대신 git 명령어를 입력할 수 있습니다.
 
 https://github.com/sujinleeme/resume-generator/tree/gh-pages 와 같이 `static`, `.gitignore`, `index.html` 파일만 올라가 있어야 합니다.
 
@@ -298,7 +306,7 @@ Switched to branch 'master'
 
 ## 이력서 문서 작성하기
 
-1. 비주얼 스튜디오 코드 에디터 열기
+#### 1. 비주얼 스튜디오 코드 에디터 열기
 
 프롬프트에서 프로젝트 경로에서 `code .` 명령어를 입력하면 비주얼 스튜디오 코드 에디터 창이 열립니다. 윈도우와 맥 모두 동일합니다.
 
@@ -308,6 +316,7 @@ $ pwd
 
 $ code .
 ```
+#### 2. 이력서 작성하고 문서 생성하기
 
 `content` 폴더에 있는 마크다운 문서를 열고 이력서, 레퍼런스, 커버레터를 작성합니다.
 
@@ -336,6 +345,8 @@ $ pwd
 $ open .
 ```
 
+#### 3. 깃 수정 커밋하기
+
 `master` 브랜치에 수정한 파일을 커밋하겠습니다. 수정한 내역을 커밋 메시지로 간결하게 적어봅시다.
 
 ```
@@ -347,9 +358,10 @@ $ git commit -m "Edit my name"
 $ git push
 ```
 
-새로 수정한 내용이 웹 사이트에도 반영이 되어야겠지요?
+#### 4. 배포하기
 
-다시 프롬프트에서 `make deploy`를 실행해 웹 사이트를 배포합니다.
+새로 수정한 내용이 웹 사이트에도 반영이 되어야겠지요?
+프롬프트에서 `make deploy`를 실행해 웹 사이트를 배포합니다.
 
 ```
 $ make deploy
