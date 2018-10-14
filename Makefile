@@ -7,31 +7,31 @@ PDF_DIR = $(OUPUT_DIR)/pdf/
 DEPLOY_BRANCH = gh-pages
 DEPLOY_DELETE_DIRS = out content bin templates
 DEPLOY_DELETE_FILES = Makefile README.md LICENSE.md installation_ko.md
+
 ifndef CURRENT_BRANCH
-CURRENT_BRANCH = $(error Could not get current branch.)
+	CURRENT_BRANCH = $(error Could not get current branch.)
 endif
 
-DATE=$(shell date +%F)
-
 ifeq ($(shell echo "check_quotes"),"check_quotes")
-   WINDOWS := yes
+	WINDOWS := yes
 else
-   WINDOWS := no
+	WINDOWS := no
 endif
 
 ifeq ($(WINDOWS),yes)
-   mkdir = mkdir $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
-   cp = cp $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
-   rm = $(wordlist 2,65535,$(foreach FILE,$(subst /,\,$(1)),& del $(FILE) > nul 2>&1)) || (exit 0)
-   rmdir = rmdir $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
-   echo = echo $(1)
+	mkdir = mkdir $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
+	cp = cp $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
+	rm = $(wordlist 2,65535,$(foreach FILE,$(subst /,\,$(1)),& del $(FILE) > nul 2>&1)) || (exit 0)
+	rmdir = rmdir $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
+	echo = echo $(1)
+	DATE = $(shell date /t)
 else
-   mkdir = mkdir -p $(1)
-   cp = cp -r $(1)
-   rm = rm -rf $(1) > /dev/null 2>&1 || true
-   rmdir = rm -rf $(1) > /dev/null 2>&1 || true
-   echo = echo "$(1)"
-
+	mkdir = mkdir -p $(1)
+	cp = cp -r $(1)
+	rm = rm -rf $(1) > /dev/null 2>&1 || true
+	rmdir = rm -rf $(1) > /dev/null 2>&1 || true
+	echo = echo "$(1)"
+	DATE=$(shell date +%FT)
 endif
 
 all: build pdf
